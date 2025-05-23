@@ -5,7 +5,7 @@ import http from "http"
 import { connectDB } from "./lib/db.js";
 import userRouter from "./routes/userRoutes.js";
 import messageRouter from "./routes/messageRoutes.js";
-import {server} from "socket.io";
+import {Server} from "socket.io";
 
 
 //create express app and http server
@@ -13,7 +13,7 @@ const app=express();
 const server= http.createServer(app)
 
 //initialize socket.io server
-export const io= new Server(server,{
+export const io = new Server(server,{
     cors:{origin:"*"}
 }
 )
