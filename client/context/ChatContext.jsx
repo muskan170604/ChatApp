@@ -1,4 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+import { createContext, useEffect, useState ,useContext} from "react";
 import { AuthContext } from "./AuthContext";
 import toast from "react-hot-toast";
 
@@ -64,8 +66,7 @@ export const ChatProvider=({children})=>{
             }else{
                 setUnseenMessages((prevUnseenMessages)=>({
                     ...prevUnseenMessages,[newMessage.senderId]:
-                    prevUnseenMessages[newMessage.senderId]?prevUnseenMessages
-                    [newMessage.senderId]+1:1
+                    prevUnseenMessages[newMessage.senderId]?prevUnseenMessages[newMessage.senderId]+1:1
                 }))
             }
         })
@@ -81,9 +82,11 @@ export const ChatProvider=({children})=>{
         return()=> unsubscribeFromMessages();
     },[socket,selectedUser])
 
+
     const value ={
         messages,users,selectedUser,getUsers,setMessages,sendMessage,setSelectedUser,unseenMessages,setUnseenMessages
     }
+
 
     return (
         <ChatContext.Provider value={value}>
